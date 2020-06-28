@@ -49,8 +49,8 @@ describe('Api Tests => Happy path', () => {
   })
 
   it('Should be a retriver profile information', () => {
-    const { name, email, password } = Cypress.env('user')
-    cy.loginOnGoBarber(email, password)
+    const { id, name, email, password } = Cypress.env('user')
+    cy.createSessionAuthenticated(email, password)
 
     cy.request({
       method: 'GET',
@@ -59,13 +59,70 @@ describe('Api Tests => Happy path', () => {
 
     cy.get('@response').then(res => {
       expect(res.status).to.be.equal(200)
-      expect(res.body).to.have.property('id')
+      expect(res.body).to.have.property('id', id)
       expect(res.body).to.have.property('name', name)
       expect(res.body).to.have.property('email', email)
       expect(res.body).not.to.have.property('password')
       expect(res.body).to.have.property('avatar_url')
       expect(res.body).to.have.property('created_at')
       expect(res.body).to.have.property('updated_at')
+    })
+  })
+
+  it('Should be a update profile information', () => {
+    const { id, name, email, password } = Cypress.env('user')
+    cy.createSessionAuthenticated(email, password)
+
+    cy.request({
+      method: 'put',
+      url: '/profile',
+      body: {
+        name: 'John Doe Updated',
+        email: 'johndoeupdated@email.com',
+      },
+    }).as('response')
+
+    cy.get('@response').then(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.body).to.have.property('id', id)
+      expect(res.body).to.have.property('name', 'John Doe Updated')
+      expect(res.body).to.have.property('email', 'johndoeupdated@email.com')
+      expect(res.body).not.to.have.property('password')
+      expect(res.body).to.have.property('avatar_url')
+      expect(res.body).to.have.property('created_at')
+      expect(res.body).to.have.property('updated_at')
+    })
+
+    cy.request({
+      method: 'put',
+      url: '/profile',
+      body: {
+        name,
+        email,
+      },
+    }).as('secondResponse')
+
+    cy.get('@secondResponse').then(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.body).to.have.property('id', id)
+      expect(res.body).to.have.property('name', name)
+      expect(res.body).to.have.property('email', email)
+    })
+  })
+
+  it.only('Should be able to insert the user avatar', () => {
+    const { email, password } = Cypress.env('user')
+    cy.createSessionAuthenticated(email, password)
+
+    cy.fixture('../assets/avatar.jpeg').as('logo')
+
+    cy.request({
+      method: 'patch',
+      url: '/users/avatar',
+      form: true,
+      body: {
+        avatar: cy.get('@logo'),
+      },
     })
   })
 })
