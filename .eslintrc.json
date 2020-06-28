@@ -1,0 +1,50 @@
+{
+  "env": {
+    "es6": true,
+    "cypress/globals": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:cypress/recommended",
+    "plugin:chai-friendly/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "cypress",
+    "chai-friendly",
+    "prettier"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "rules": {
+    "cypress/no-assigning-return-values": "error",
+    "cypress/no-unnecessary-waiting": "error",
+    "cypress/assertion-before-screenshot": "warn",
+    "cypress/no-force": "warn",
+    "no-unused-expressions": 0,
+    "chai-friendly/no-unused-expressions": 2,
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "prettier/prettier": "error"
+  }
+}
