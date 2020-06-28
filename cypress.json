@@ -1,4 +1,5 @@
 {
   "baseUrl": "https://gobarber.semfila.club",
-  "watchForFileChanges": false
+  "watchForFileChanges": false,
+  "projectId": "e3tmiw"
 }
