@@ -23,9 +23,24 @@ describe('Api Tests => Happy path', () => {
       expect(res.body).to.have.property('updated_at')
     })
   })
-})
 
-/*
-"name":"{{user_name}}",
-	"email":"{{user_email}}",
-	"password":"{{user_password}}" */
+  it.only('Should be possible to do a login with already existing user', () => {
+    cy.fixture('user.json').then(user => {
+      cy.request({
+        method: 'POST',
+        url: '/sessions',
+        body: {
+          email: user.email,
+          password: user.password,
+        },
+      }).as('response')
+    })
+
+    cy.get('@response').then(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.body).to.have.property('token')
+      expect(res.body).to.have.property('user')
+      expect(res.body.user).to.have.property('id')
+    })
+  })
+})
