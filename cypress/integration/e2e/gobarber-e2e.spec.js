@@ -5,7 +5,14 @@ import locators from '../../support/locators'
 describe('E2E Tests => Happy path', () => {
   before(() => {
     cy.fixture('user.json').then(user => Cypress.env('user', user))
+  })
+
+  beforeEach(() => {
     cy.visit('https://rocketseat-gobarber-web.herokuapp.com/')
+  })
+
+  afterEach(() => {
+    cy.clearLocalStorage()
   })
 
   it('Should be possible to create a new account', () => {
