@@ -109,20 +109,4 @@ describe('Api Tests => Happy path', () => {
       expect(res.body).to.have.property('email', email)
     })
   })
-
-  it.only('Should be able to insert the user avatar', () => {
-    const { email, password } = Cypress.env('user')
-    cy.createSessionAuthenticated(email, password)
-
-    cy.fixture('../assets/avatar.jpeg').as('logo')
-
-    cy.request({
-      method: 'patch',
-      url: '/users/avatar',
-      form: true,
-      body: {
-        avatar: cy.get('@logo'),
-      },
-    })
-  })
 })
