@@ -35,9 +35,7 @@ describe('E2E Tests => Happy path', () => {
     cy.get(locators.TOAST.CLOSE_TOAST_CONTAINER).should('be.visible').click()
   })
 
-  it('Should be possible to see the schedules to tomorrow', () => {})
-
-  it.only('Should be insert provider avatar', () => {
+  it('Should be insert provider avatar', () => {
     const { email, password } = Cypress.env('user')
     cy.loginWebGoBarber(email, password)
     cy.get(locators.DASHBOARD.LOGO).should('be.visible')
@@ -49,5 +47,15 @@ describe('E2E Tests => Happy path', () => {
 
     cy.get(locators.TOAST.TOAST_CONTAINER).should('be.visible')
     cy.get(locators.TOAST.CLOSE_TOAST_CONTAINER).should('be.visible').click()
+  })
+
+  it.only('Should be possible to see the schedules to tomorrow', () => {
+    const { email, password } = Cypress.env('user')
+    cy.loginWebGoBarber(email, password)
+    cy.get(locators.DASHBOARD.LOGO).should('be.visible')
+
+    cy.get(locators.DASHBOARD.TODAY).should('be.visible')
+    cy.get(locators.DASHBOARD.FN_DAY_SELECTED('Thu Jul 02 2020')).click()
+    cy.get(locators.DASHBOARD.TODAY).should('be.not.visible')
   })
 })
