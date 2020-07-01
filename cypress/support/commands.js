@@ -1,3 +1,5 @@
+import locators from './locators'
+
 Cypress.Commands.overwrite('request', (originalFn, ...options) => {
   if (options.length === 1) {
     if (Cypress.env('authorizedSession')) {
@@ -24,4 +26,10 @@ Cypress.Commands.add('createSessionAuthenticated', (email, password) => {
       Cypress.env('authorizedSession', response.token)
       return response
     })
+})
+
+Cypress.Commands.add('loginWebGoBarber', (email, password) => {
+  cy.get(locators.SIGNIN.EMAIL).type(email)
+  cy.get(locators.SIGNIN.PASSWORD).type(password)
+  cy.get(locators.SIGNIN.BTN_LOGIN).click()
 })
