@@ -34,4 +34,20 @@ describe('E2E Tests => Happy path', () => {
     cy.get(locators.TOAST.TOAST_CONTAINER).should('be.visible')
     cy.get(locators.TOAST.CLOSE_TOAST_CONTAINER).should('be.visible').click()
   })
+
+  it('Should be possible to see the schedules to tomorrow', () => {})
+
+  it.only('Should be insert provider avatar', () => {
+    const { email, password } = Cypress.env('user')
+    cy.loginWebGoBarber(email, password)
+    cy.get(locators.DASHBOARD.LOGO).should('be.visible')
+
+    cy.get(locators.DASHBOARD.PROFILE).click()
+
+    let avatar = 'avatar.jpeg'
+    cy.get(locators.PROFILE.AVATAR).attachFile(avatar)
+
+    cy.get(locators.TOAST.TOAST_CONTAINER).should('be.visible')
+    cy.get(locators.TOAST.CLOSE_TOAST_CONTAINER).should('be.visible').click()
+  })
 })

@@ -20,6 +20,16 @@ const locators = {
   },
   DASHBOARD: {
     LOGO: '[data-cy=logo-gobarber]',
+    PROFILE: '[data-cy=link-to-profile]',
+  },
+  PROFILE: {
+    AVATAR: '[data-cy=avatar]',
+    NAME: '[data-cy=name]',
+    EMAIL: '[data-cy=email]',
+    OLD_PASSWORD: '[data-cy=old_password]',
+    PASSWORD: '[data-cy=password]',
+    PASSWORD_CONFIRMATION: '[data-cy=password_confirmation]',
+    BTN_CONFIRM: '[data-cy=btn-confirmar-mudanca]',
   },
 }
 
