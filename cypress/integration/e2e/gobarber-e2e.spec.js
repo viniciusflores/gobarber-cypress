@@ -8,7 +8,7 @@ describe('E2E Tests => Happy path', () => {
   })
 
   beforeEach(() => {
-    cy.visit('https://rocketseat-gobarber-web.herokuapp.com/')
+    cy.visit('https://gobarber.semfila.club/')
   })
 
   afterEach(() => {
@@ -55,7 +55,7 @@ describe('E2E Tests => Happy path', () => {
     cy.get(locators.DASHBOARD.LOGO).should('be.visible')
 
     cy.get(locators.DASHBOARD.TODAY).should('be.visible')
-    cy.get(locators.DASHBOARD.FN_DAY_SELECTED('Thu Jul 02 2020')).click()
+    cy.get(locators.DASHBOARD.FN_DAY_SELECTED('Thu Jul 30 2020')).click()
     cy.get(locators.DASHBOARD.TODAY).should('be.not.visible')
   })
 })

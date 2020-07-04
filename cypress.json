@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://gobarber.semfila.club",
+  "baseUrl": "https://api.gobarber.semfila.club",
   "watchForFileChanges": false,
   "viewportWidth": 1024,
   "viewportHeight": 768,

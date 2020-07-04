@@ -21,8 +21,8 @@ const locators = {
   DASHBOARD: {
     LOGO: '[data-cy=logo-gobarber]',
     PROFILE: '[data-cy=link-to-profile]',
-    TODAY: '[name=hoje]',
-    FN_DAY_SELECTED: day => `[//div[contains(@aria-label,${day})]]`,
+    TODAY: '[data-cy=isToday]',
+    FN_DAY_SELECTED: day => `[aria-label="${day}"]`,
   },
   PROFILE: {
     AVATAR: '[data-cy=avatar]',
