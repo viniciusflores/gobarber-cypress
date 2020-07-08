@@ -1,7 +1,7 @@
 {
   "baseUrl": "https://api.gobarber.semfila.club",
   "watchForFileChanges": false,
-  "viewportWidth": 1024,
-  "viewportHeight": 768,
+  "viewportWidth": 1920,
+  "viewportHeight": 1080,
   "projectId": "e3tmiw"
 }
