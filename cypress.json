@@ -3,5 +3,6 @@
   "watchForFileChanges": false,
   "viewportWidth": 1920,
   "viewportHeight": 1080,
-  "projectId": "e3tmiw"
+  "projectId": "e3tmiw",
+  "video":false
 }

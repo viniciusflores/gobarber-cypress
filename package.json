@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "open": "cypress open",
-    "run": "cypress run"
+    "run": "cypress run",
+    "run-api": "cypress run --spec 'cypress/integration/apis/*.js'"
   },
   "devDependencies": {
     "cypress": "^4.9.0",
