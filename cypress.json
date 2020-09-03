@@ -4,5 +4,10 @@
   "viewportWidth": 1920,
   "viewportHeight": 1080,
   "projectId": "e3tmiw",
-  "video":false
+  "video":false,
+  "testFiles": "**/*.*spec.*",
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "configFile": "reporter-config.json"
+  }
 }
