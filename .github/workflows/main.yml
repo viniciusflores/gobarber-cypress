@@ -35,4 +35,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: mochawesome-report/full_report.html
+          FOLDER: mochawesome-report
