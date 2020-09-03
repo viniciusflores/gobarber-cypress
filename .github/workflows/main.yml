@@ -30,6 +30,8 @@ jobs:
 
       - run: npm run report:mocha
 
+      - run: mv ./mochawesome-report/full_report.html ./mochawesome-report/index.html
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.5.9
         with:

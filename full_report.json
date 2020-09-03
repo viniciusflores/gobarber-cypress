@@ -1,0 +1,159 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-09-03T18:36:18.335Z",
+    "end": "2020-09-03T18:36:18.335Z",
+    "duration": 2923,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1169b558-d15b-4892-a198-dd5dceb76f16",
+      "title": "",
+      "fullFile": "cypress/integration/apis/gobarber-api.spec.js",
+      "file": "cypress/integration/apis/gobarber-api.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1f44da43-27c3-4ce2-a1eb-0ded7947399e",
+          "title": "Api Tests => Happy path",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should be possible to create a new account",
+              "fullTitle": "Api Tests => Happy path Should be possible to create a new account",
+              "timedOut": null,
+              "duration": 1236,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: '/users',\n  body: {\n    name: 'John Doe',\n    email: \"teste\".concat(Date.now(), \"@email.com\"),\n    password: '123456'\n  }\n}).as('response');\ncy.get('@response').then(function (res) {\n  expect(res.status).to.be.equal(200);\n  expect(res.body).to.have.property('id');\n  expect(res.body).to.have.property('name', 'John Doe');\n  expect(res.body).to.have.property('email');\n  expect(res.body).not.to.have.property('password');\n  expect(res.body).to.have.property('avatar_url');\n  expect(res.body).to.have.property('created_at');\n  expect(res.body).to.have.property('updated_at');\n});",
+              "err": {},
+              "uuid": "6096c661-c171-4cd2-81e5-bb0eb0be3d18",
+              "parentUUID": "1f44da43-27c3-4ce2-a1eb-0ded7947399e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should be possible to do a login with already existing user",
+              "fullTitle": "Api Tests => Happy path Should be possible to do a login with already existing user",
+              "timedOut": null,
+              "duration": 285,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var _Cypress$env = Cypress.env('user'),\n    name = _Cypress$env.name,\n    email = _Cypress$env.email,\n    password = _Cypress$env.password;\ncy.request({\n  method: 'POST',\n  url: '/sessions',\n  body: {\n    email: email,\n    password: password\n  }\n}).as('response');\ncy.get('@response').then(function (res) {\n  expect(res.status).to.be.equal(200);\n  expect(res.body).to.have.property('token');\n  expect(res.body).to.have.property('user');\n  expect(res.body.user).to.have.property('id');\n  expect(res.body.user).to.have.property('name', name);\n});",
+              "err": {},
+              "uuid": "fd286476-c16d-4392-9266-58a5a3284cca",
+              "parentUUID": "1f44da43-27c3-4ce2-a1eb-0ded7947399e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should be a retriver profile information",
+              "fullTitle": "Api Tests => Happy path Should be a retriver profile information",
+              "timedOut": null,
+              "duration": 538,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var _Cypress$env2 = Cypress.env('user'),\n    id = _Cypress$env2.id,\n    name = _Cypress$env2.name,\n    email = _Cypress$env2.email,\n    password = _Cypress$env2.password;\ncy.createSessionAuthenticated(email, password);\ncy.request({\n  method: 'GET',\n  url: '/profile'\n}).as('response');\ncy.get('@response').then(function (res) {\n  expect(res.status).to.be.equal(200);\n  expect(res.body).to.have.property('id', id);\n  expect(res.body).to.have.property('name', name);\n  expect(res.body).to.have.property('email', email);\n  expect(res.body).not.to.have.property('password');\n  expect(res.body).to.have.property('avatar_url');\n  expect(res.body).to.have.property('created_at');\n  expect(res.body).to.have.property('updated_at');\n});",
+              "err": {},
+              "uuid": "8c918219-ba6b-46a7-9da8-f51edd680149",
+              "parentUUID": "1f44da43-27c3-4ce2-a1eb-0ded7947399e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should be a update profile information",
+              "fullTitle": "Api Tests => Happy path Should be a update profile information",
+              "timedOut": null,
+              "duration": 864,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var _Cypress$env3 = Cypress.env('user'),\n    id = _Cypress$env3.id,\n    name = _Cypress$env3.name,\n    email = _Cypress$env3.email,\n    password = _Cypress$env3.password;\ncy.createSessionAuthenticated(email, password);\ncy.request({\n  method: 'put',\n  url: '/profile',\n  body: {\n    name: 'John Doe Updated',\n    email: 'johndoeupdated@email.com'\n  }\n}).as('response');\ncy.get('@response').then(function (res) {\n  expect(res.status).to.be.equal(200);\n  expect(res.body).to.have.property('id', id);\n  expect(res.body).to.have.property('name', 'John Doe Updated');\n  expect(res.body).to.have.property('email', 'johndoeupdated@email.com');\n  expect(res.body).not.to.have.property('password');\n  expect(res.body).to.have.property('avatar_url');\n  expect(res.body).to.have.property('created_at');\n  expect(res.body).to.have.property('updated_at');\n});\ncy.request({\n  method: 'put',\n  url: '/profile',\n  body: {\n    name: name,\n    email: email\n  }\n}).as('secondResponse');\ncy.get('@secondResponse').then(function (res) {\n  expect(res.status).to.be.equal(200);\n  expect(res.body).to.have.property('id', id);\n  expect(res.body).to.have.property('name', name);\n  expect(res.body).to.have.property('email', email);\n});",
+              "err": {},
+              "uuid": "7f8303ea-477d-470c-9e9c-c40967b2ee4e",
+              "parentUUID": "1f44da43-27c3-4ce2-a1eb-0ded7947399e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6096c661-c171-4cd2-81e5-bb0eb0be3d18",
+            "fd286476-c16d-4392-9266-58a5a3284cca",
+            "8c918219-ba6b-46a7-9da8-f51edd680149",
+            "7f8303ea-477d-470c-9e9c-c40967b2ee4e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2923,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default"
+      },
+      "version": "5.1.0"
+    }
+  }
+}
