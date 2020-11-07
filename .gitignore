@@ -1,3 +1,4 @@
 node_modules
 cypress/integration/x_examples/
 cypress/fixtures/x_examples/
+mochawesome-report/
